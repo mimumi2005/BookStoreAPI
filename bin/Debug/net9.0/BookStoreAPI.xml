@@ -15,11 +15,13 @@
             </summary>
             <param name="context">The database context.</param>
         </member>
-        <member name="M:BooksController.GetBooks">
+        <member name="M:BooksController.GetBooks(System.String,System.Int32)">
             <summary>
-            Retrieves all books from the database.
+            Retrieves all books from the database, or books by a specific author if the author query parameter is provided.
             </summary>
-            <returns>A list of books.</returns>
+            <param name="author">The name of the author whose books to retrieve. If not provided, all books are retrieved.</param>
+            <param name="page">The page number for pagination (defaults to 1 if not provided).</param>
+            <returns>A paginated list of books. If an author is specified, returns books by that author, otherwise returns all books.</returns>
         </member>
         <member name="M:BooksController.GetBook(System.Int32)">
             <summary>

@@ -20,14 +20,50 @@ public class BooksController : ControllerBase
     }
 
     /// <summary>
-    /// Retrieves all books from the database.
+    /// Retrieves all books from the database, or books by a specific author if the author query parameter is provided.
     /// </summary>
-    /// <returns>A list of books.</returns>
+    /// <param name="author">The name of the author whose books to retrieve. If not provided, all books are retrieved.</param>
+    /// <param name="page">The page number for pagination (defaults to 1 if not provided).</param>
+    /// <returns>A paginated list of books. If an author is specified, returns books by that author, otherwise returns all books.</returns>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Books>>> GetBooks()
+    public async Task<ActionResult<IEnumerable<Books>>> GetBooks([FromQuery] string? author, [FromQuery] int page = 1)
     {
-        return await _context.Books.ToListAsync();
+        int pageSize = 5; // Page size for pagination
+
+        IQueryable<Books> query = _context.Books;
+
+        if (!string.IsNullOrEmpty(author))
+        {
+            query = query.Where(b => b.Author == author); // Filter by author if provided
+        }
+
+        // Get the total count of books
+        var totalBooks = await query.CountAsync();
+
+        // Calculate total pages based on the page size
+        var totalPages = (int)Math.Ceiling(totalBooks / (double)pageSize);
+
+        // If the page number is greater than the total pages, return a bad request
+        if (page > totalPages && totalPages > 0)
+        {
+            return BadRequest("Page number exceeds total number of pages.");
+        }
+
+        // Get the paginated list of books
+        var books = await query
+            .Skip((page - 1) * pageSize) // Skip the books from the previous pages
+            .Take(pageSize) // Take the number of books specified by pageSize
+            .ToListAsync();
+
+        return Ok(new
+        {
+            TotalBooks = totalBooks,
+            TotalPages = totalPages,
+            CurrentPage = page,
+            Books = books
+        });
     }
+
 
     /// <summary>
     /// Retrieves a book by its ID.

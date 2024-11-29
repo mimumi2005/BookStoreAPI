@@ -131,3 +131,4 @@ C:\Users\Mim\OneDrive\Dators\Unlimited_bacon_but_no_games\ASP.NET\BookStoreAPI\b
 C:\Users\Mim\OneDrive\Dators\Unlimited_bacon_but_no_games\ASP.NET\BookStoreAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Mim\OneDrive\Dators\Unlimited_bacon_but_no_games\ASP.NET\BookStoreAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Mim\OneDrive\Dators\Unlimited_bacon_but_no_games\ASP.NET\BookStoreAPI\bin\Debug\net9.0\BookStoreAPI.xml
+C:\Users\Mim\OneDrive\Dators\Unlimited_bacon_but_no_games\ASP.NET\BookStoreAPI\obj\Debug\net9.0\BookStoreAPI.sourcelink.json
