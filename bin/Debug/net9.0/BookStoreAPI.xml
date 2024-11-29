@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookStoreAPI</name>
+    </assembly>
+    <members>
+        <member name="T:BooksController">
+            <summary>
+            Controller for managing books.
+            </summary>
+        </member>
+        <member name="M:BooksController.#ctor(BookStoreDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BooksController"/> class.
+            </summary>
+            <param name="context">The database context.</param>
+        </member>
+        <member name="M:BooksController.GetBooks">
+            <summary>
+            Retrieves all books from the database.
+            </summary>
+            <returns>A list of books.</returns>
+        </member>
+        <member name="M:BooksController.GetBook(System.Int32)">
+            <summary>
+            Retrieves a book by its ID.
+            </summary>
+            <param name="id">The ID of the book to retrieve.</param>
+            <returns>A book object if found, or a 404 Not Found if not.</returns>
+        </member>
+        <member name="M:BooksController.PostBook(Books)">
+            <summary>
+            Adds a new book to the database.
+            </summary>
+            <param name="book">The book object to add, as JSON.</param>
+            <returns>The newly created book object, including the generated ID.</returns>
+        </member>
+        <member name="M:BooksController.PutBook(System.Int32,Books)">
+            <summary>
+            Updates an existing book in the database.
+            </summary>
+            <param name="id">The ID of the book to update.</param>
+            <param name="book">The updated book object to add, as JSON.</param>
+            <returns>Returns No Content (204) if successful, or a Bad Request (400) if the ID mismatch occurs.</returns>
+        </member>
+        <member name="M:BooksController.DeleteBook(System.Int32)">
+            <summary>
+            Deletes a book by its ID.
+            </summary>
+            <param name="id">The ID of the book to delete.</param>
+            <returns>No Content (204) if successful, or Not Found    (404) if the book is not found.</returns>
+        </member>
+        <member name="T:BookStoreDbContext">
+            <summary>
+            Database context for the BookStore application.
+            </summary>
+        </member>
+        <member name="P:BookStoreDbContext.Books">
+            <summary>
+            Gets or sets the Books DbSet.
+            </summary>
+        </member>
+        <member name="P:BookStoreDbContext.DbPath">
+            <summary>
+            Gets the path to the database file.
+            </summary>
+        </member>
+        <member name="M:BookStoreDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BookStoreDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BookStoreDbContext"/> class.
+            </summary>
+            <param name="options">The options to be used by the DbContext.</param>
+        </member>
+        <member name="P:BookStoreDbContext.Book">
+            <summary>
+            Gets or sets the Books entity.
+            </summary>
+        </member>
+        <member name="M:BookStoreDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Configures the database context options.
+            </summary>
+            <param name="optionsBuilder">The options builder.</param>
+        </member>
+        <member name="T:BookStoreAPI.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Books">
+            <summary>
+            Represents a book entity.
+            </summary>
+        </member>
+        <member name="P:Books.Id">
+            <summary>
+            Gets or sets the book ID.
+            </summary>
+        </member>
+        <member name="P:Books.Title">
+            <summary>
+            Gets or sets the title of the book.
+            </summary>
+        </member>
+        <member name="P:Books.Author">
+            <summary>
+            Gets or sets the author of the book.
+            </summary>
+        </member>
+        <member name="P:Books.Price">
+            <summary>
+            Gets or sets the price of the book.
+            </summary>
+        </member>
+        <member name="P:Books.PublishedDate">
+            <summary>
+            Gets or sets the published date of the book.
+            </summary>
+        </member>
+    </members>
+</doc>
